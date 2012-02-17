@@ -15,7 +15,7 @@ end
 bash "reload_hostname" do
   user "root"
   code "hostname -F /etc/hostname"
-  notifies :restart, "service[chef-client]"
+  # notifies :restart, "service[chef-client]" # No good with chef-solo
   action :nothing
 end
 
