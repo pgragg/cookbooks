@@ -51,7 +51,9 @@ else
     owner "root"
     group "root"
     mode 0644
-    only_if do ::File.exists?(node[:passenger][:root_path]) end
+    only_if do
+      ::File.exists?(node[:passenger][:root_path])
+    end
   end
 end
 
@@ -66,9 +68,9 @@ end
 
 include_recipe "apache2"
 
-if ::File.exists?(node[:passenger][:root_path])
-  apache_module "passenger"
-end
+# if ::File.exists?(node[:passenger][:root_path])
+apache_module "passenger"
+# end
 
 
 #log_path = node[:passenger][:production][:log_path]
