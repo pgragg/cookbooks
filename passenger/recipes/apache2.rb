@@ -31,6 +31,7 @@ bash "install passenger/apache2" do
   user "root"
   code "#{rvm_exec_prefix} passenger-install-apache2-module --auto"
   creates "#{node[:passenger][:module_path]}"
+  not_if { ::File.exists?(node[:passenger][:module_path].to_s) }
 end
 
 
